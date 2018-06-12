@@ -1,53 +1,41 @@
 import random
 
-# game messages
-rockBeatScissors = "You win! Rock breaks scissors!"
-paperBeatRock = "You win! Paper covers rock!"
-ScissorsBeatPaper = "You win! Scissors cuts paper."
-
-rockLossToPaper = "Sorry, Paper covers rock."
-paperLossToScissors = "Sorry, Scissors cuts paper."
-scissorsLossToRock = "Sorry, Rock breaks scissors"
-
-tie = "It's a Tie!"
-unvailed = "Unvaild choice"
-
 # while loop to play again
 playAgain = ""
 
+# message content
+message = ""
 while playAgain != "N":
 
     #user input
-    print "---Lets play Rock, Paper, Scissors---\nType R for rock, P for paper, S for Scissors"
+    print("---Lets play Rock, Paper, Scissors---\nType R for rock, P for paper, S for Scissors")
 
-    userPick = raw_input("Enter your choice: ").upper()
+    userPick = input("Enter your choice: ").upper()
 
-    # Array
+    # Choices Array
     choices = ["R", "P" , "S"]
 
     computerPick = random.choice(choices)
 
-    print "You chose " + userPick + " The computer chose " + computerPick
-
     if userPick == computerPick:
-        print tie
+        print("It's a Tie!")
     elif userPick == "R" and computerPick == "P":
-        print rockLossToPaper
+        message = "You lose!, paper covers rock."
     elif userPick == "R" and computerPick == "S":
-        print rockBeatScissors
+        message = "You win! Rock breaks scissors!"
     elif userPick == "P" and computerPick == "R":
-        print paperBeatRock
+        message = "You win! Paper covers rock!"
     elif userPick == "P" and computerPick == "S":
-        print paperLossToScissors
+        message = "You lose!, Scissors cuts paper."
     elif userPick == "S" and computerPick == "P":
-        print ScissorsBeatPaper
+        message = "You win! Scissors cuts paper."
     elif userPick == "S" and computerPick == "R":
-        print scissorsLossToRock
+        message = "You lose!, Rock breaks scissors"
     else:
-        print "Unvaild choice"
+        message = "Unvaild choice"
+    print (f"You chose {userPick} The computer chose {computerPick} \n{message}")
 
-    playAgain = raw_input("Play again(Y/N)?").upper()
-    print "\n"
+    playAgain = input("Play again(Y/N)?").upper()
 
 # Ended game
-print "GoodBye!"
+print ("GoodBye!")
